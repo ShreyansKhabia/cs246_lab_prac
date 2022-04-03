@@ -55,14 +55,14 @@ public:
 
 void Directory::insert(ll x, ll pass){
 
-	cout<<"inserting "<<x<<endl;
+	//cout<<"inserting "<<x<<endl;
 	ll index = x & ((1<<gd)-1);
-	cout<<"index: "<<index<<", global depth: "<<gd<<", occup: "<<dirv[index]->oc<<", local depth: "<<dirv[index]->ld<<endl;
+	//cout<<"index: "<<index<<", global depth: "<<gd<<", occup: "<<dirv[index]->oc<<", local depth: "<<dirv[index]->ld<<endl;
 	
 
 	if(dirv[index]->oc < bc){
 
-		cout<<"case 0\n";
+		//cout<<"case 0\n";
 
 		for (int i = 0; i < bc; ++i)
 		{
@@ -73,7 +73,7 @@ void Directory::insert(ll x, ll pass){
 				if(toc_holer[dirv[index]].size()==0){
 					toc_holer[dirv[index]].push_back(global_toc++);
 				}
-				cout<<"insertion of "<<x<< " success at "<<index<<endl;
+				//cout<<"insertion of "<<x<< " success at "<<index<<endl;
 				break;
 			}
 		}
@@ -82,11 +82,11 @@ void Directory::insert(ll x, ll pass){
 
 	}else{
 
-		cout<<"for "<<x;
+		//cout<<"for "<<x;
 
 		if(dirv[index]->ld<gd){
 
-			cout<<" case 1\n";
+			//cout<<" case 1\n";
 
 			dirv[index]->ld++;
 			
@@ -110,9 +110,9 @@ void Directory::insert(ll x, ll pass){
 
 			for (int i = 0; i < tmp.size(); ++i)
 			{	
-				cout<<tmp[i]<<endl;
+				//cout<<tmp[i]<<endl;
 				ll newindex = ((tmp[i]) & (andnum));
-				cout<<newindex<<endl;
+				//cout<<newindex<<endl;
 
 				if(newindex != oldindex && dirv[newindex] == dirv[oldindex]){
 
@@ -151,7 +151,7 @@ void Directory::insert(ll x, ll pass){
 						if(toc_holer[dirv[newindex]].size()==0){
 							toc_holer[dirv[newindex]].push_back(global_toc++);
 						}
-						cout<<"insertion success at "<<newindex<<endl;
+						//cout<<"insertion success at "<<newindex<<endl;
 						break;
 					}
 				}
@@ -161,13 +161,13 @@ void Directory::insert(ll x, ll pass){
 			}
 
 			//update_toc();
-			showdir();
+			//showdir();
 			insert(x,pass+1);
 
 		}
 
 		else{
-			cout<<" case 2\n";
+			//cout<<" case 2\n";
 			if(gd==20){
 				cout<<"global depth reached 20, action aborted!\n";
 			}else{
@@ -190,7 +190,7 @@ void Directory::insert(ll x, ll pass){
 				}
 				
 				//update_toc();
-				showdir();
+				//showdir();
 				insert(x, pass+1);
 			}
 		}
@@ -256,7 +256,7 @@ bool toc_comp(vector<ll> v1, vector<ll> v2){
 
 void Directory::display_status(){
 	//update_toc();
-	cout << "here\n";
+	//cout << "here\n";
 	vector<vector<ll>> ans;
 	vector<ll> vec;
 	for (int i = 0; i < dirv.size(); ++i)
@@ -283,7 +283,7 @@ void Directory::display_status(){
 	cout<<ans.size()<<endl;
 
 	for(auto buc : ans){
-		cout<<buc[1]<<' '<<buc[2]<<" toc: "<<buc[0]<<endl;
+		cout<<buc[1]<<' '<<buc[2]<<endl;
 	}
 	// for (int i = 1; i < global_toc; ++i)
 	// {
@@ -351,24 +351,24 @@ int main()
 
 				cin>>x;
 				dir.insert(x,0);
-				dir.showdir();
+				//dir.showdir();
 
 				break;
 			case 3:
 
 				cin>>x;
 				dir.search(x);
-				dir.showdir();
+				//dir.showdir();
 				break;
 			case 4:
 
 				cin>>x;
 				dir.delete_ele(x);
-				dir.showdir();
+				//dir.showdir();
 				break;
 			case 5:
 				dir.display_status();
-				dir.showdir();
+				//dir.showdir();
 				break;
 			case 6:
 				term=0;
